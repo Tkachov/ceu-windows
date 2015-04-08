@@ -1,9 +1,11 @@
 ## Installing Cygwin and necessary packages
 
 Install [Cygwin](https://cygwin.com/) and the following packages using Cygwin installer:  
-git, gcc, lua5.1, lua-lpeg 0.12, freetype2, libpng and zlib.
+curl, freetype2, g++, gcc, git, libpng, lua-lpeg 0.12, lua5.1, make, unzip and zlib.
 
 **Warning:** freetype2 Cygwin package is available for x64 only, so you can't build SDL2_ttf on x86 and use it in your project.
+
+**Note:** you don't need curl and unzip if you're going to download SDL sources on your own. These are needed only for **download-sdl.sh**.
 
 (You should also install [IJG](http://www.ijg.org/) and [SGI TIFF](ftp://ftp.sgi.com/graphics/tiff/) libraries to get JPEG and TIFF support in SDL2_image. I didn't, so you have to figure it out on your own, but it should be as simple as installing necessary packages in Cygwin or building those from sources using instructions on their sites.)
 
@@ -24,9 +26,13 @@ SDL2, SDL2_image, SDL2_mixer, SDL2_ttf and SDL2_net.
 
 Download SDL2_gfx sources from its [site](http://cms.ferzkopp.net/index.php/software/13-sdl-gfx).
 
+Unpack them into directories "SDL", "SDL_image", "SDL_mixer", "SDL_ttf", "SDL_net", "SDL2_gfx".
+
+(This step can be done using **download-sdl.sh**.)
+
 In SDL2_mixer **configure** file remove *-mno-cygwin* flag from *BASE_CFLAGS* and *BASE_LDFLAGS* variables.
 
-Build every SDL library like that (you can use **build-sdl.sh** to do that):
+Build every SDL library like that:
 
 	cd SDL          # folder with library sources
 	mkdir build
@@ -34,6 +40,8 @@ Build every SDL library like that (you can use **build-sdl.sh** to do that):
 	../configure
 	make
 	make install    # you don't need sudo within Cygwin
+
+(You can run **build-sdl.sh** to do it.)
 
 ## Using Céu
 

@@ -1,7 +1,5 @@
-#TODO: check folders names and cd work
-
-if [ ! -d "SDL2" ]; then
-  echo "SDL2 directory missing"
+if [ ! -d "SDL" ]; then
+  echo "SDL directory missing"
   exit
 fi
 
@@ -10,8 +8,8 @@ if [ ! -d "SDL_image" ]; then
   exit
 fi
 
-if [ ! -d "SDL2_mixer" ]; then
-  echo "SDL2_mixer directory missing"
+if [ ! -d "SDL_mixer" ]; then
+  echo "SDL_mixer directory missing"
   exit
 fi
 
@@ -30,8 +28,8 @@ if [ ! -d "SDL2_gfx" ]; then
   exit
 fi
 
-echo "Building SDL2:"
-cd SDL2
+echo "Building SDL:"
+cd SDL
 mkdir build
 cd build
 ../configure
@@ -48,8 +46,8 @@ make
 make install
 cd ../..
 
-echo "Building SDL2_mixer:"
-cd SDL2_mixer
+echo "Building SDL_mixer:"
+cd SDL_mixer
 sed 's/^\( *BASE_CFLAGS *= *"[^"]*\)-mno-cygwin *\([^"]*"\)/\1\2/' -i configure
 sed 's/^\( *BASE_LDFLAGS *= *"[^"]*\)-mno-cygwin *\([^"]*"\)/\1\2/' -i configure
 mkdir build
